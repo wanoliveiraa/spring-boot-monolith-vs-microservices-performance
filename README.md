@@ -1,10 +1,21 @@
-Comparativo de Desempenho: Monólito vs Microsserviços
+# Comparativo de Desempenho Spring Boot
 
-Este repositório contém a implementação e os experimentos realizados no Trabalho de Conclusão de Curso "Comparativo de Desempenho de Aplicação Spring Boot em Arquitetura Monolítica e de Microsserviços com Docker".
+Projeto desenvolvido para o Trabalho de Conclusão de Curso (TCC), com o objetivo de comparar o desempenho de uma aplicação **Spring Boot** em arquitetura **monolítica** e **microsserviços**, utilizando **Docker**.
 
-O projeto tem como objetivo comparar o desempenho de uma aplicação desenvolvida com Spring Boot utilizando duas abordagens arquiteturais:
+## Tecnologias
 
-Arquitetura Monolítica
-Arquitetura de Microsserviços
+* Java
+* Spring Boot
+* Docker
+* Docker Compose
+* k6
+* InfluxDB
+* Grafana
 
-Os experimentos foram executados utilizando Docker, com testes de carga realizados por meio do k6 e monitoramento dos resultados através do InfluxDB e Grafana.
+## Objetivo
+
+Avaliar e comparar o desempenho das duas arquiteturas por meio de testes de carga, analisando métricas como tempo de resposta, throughput e taxa de erros.
+
+## Autor
+
+**Walderney Oliveira Azevedo**
