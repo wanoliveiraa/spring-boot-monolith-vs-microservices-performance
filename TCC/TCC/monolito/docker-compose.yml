@@ -1,0 +1,41 @@
+version: '2.4'
+
+services:
+  java_service:
+    build:
+      context: ../monolito
+      dockerfile: Dockerfile
+    container_name: monolito
+    networks:
+      - app-network2
+    environment:
+      DB_USER: ${DB_USER}
+      DB_NAME: ${DB_NAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_PORT: ${DB_PORT}
+      DB_HOST: ${DB_HOST}
+      CONTAINER_NAME: ${CONTAINER_NAME}
+      NODE_ENV: ${NODE_ENV}
+      JAVA_OPTS: "-Xms512m -Xmx1700m"
+    ports:
+      - "8080:8080"
+    mem_limit: 2048m       # ✔️ limite real de memória
+    cpus: 2.0              # ✔️ limite real de CPU
+
+  database:
+    image: postgres:16-alpine3.18
+    container_name: ${CONTAINER_NAME}
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network2
+    mem_limit: 2048m       # ✔️ limite real de memória
+    cpus: 1.0              # ✔️ limite real de CPU
+
+networks:
+  app-network2:
+    driver: bridge

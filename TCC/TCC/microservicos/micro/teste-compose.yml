@@ -1,0 +1,114 @@
+version: '3.8'
+
+services:
+  influxdb:
+    image: influxdb:1.8
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+    environment:
+      - INFLUXDB_DB=k6
+    networks:
+      - test-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - influxdb
+    volumes:
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin123
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+    networks:
+      - test-network
+
+  test_k6_popula_banco:
+    image: grafana/k6
+    volumes:
+      - ./testesK6:/scripts:ro
+    depends_on:
+      - influxdb
+    entrypoint: >
+      sh -c "k6 run /scripts/popula_banco.js --out influxdb=http://influxdb:8086/k6"
+    networks:
+      - test-network
+
+  test_k6_escrita_pedidos:
+    image: grafana/k6
+    volumes:
+      - ./testesK6:/scripts:ro
+    depends_on:
+      - influxdb
+    entrypoint: >
+      sh -c "k6 run /scripts/escrita_pedidos.js --out influxdb=http://influxdb:8086/k6"
+    networks:
+      - test-network
+
+  test_k6_leitura_simples:
+    image: grafana/k6
+    volumes:
+      - ./testesK6:/scripts:ro
+    depends_on:
+      - influxdb
+    entrypoint: >
+      sh -c "k6 run /scripts/leitura_simples.js --out influxdb=http://influxdb:8086/k6"
+    networks:
+      - test-network
+
+  test_k6_leitura_complexa:
+    image: grafana/k6
+    volumes:
+      - ./testesK6:/scripts:ro
+    depends_on:
+      - influxdb
+    entrypoint: >
+      sh -c "k6 run /scripts/leitura_complexa.js --out influxdb=http://influxdb:8086/k6"
+    networks:
+      - test-network
+
+  test_k6_atualizacao_dados:
+    image: grafana/k6
+    volumes:
+      - ./testesK6:/scripts:ro
+    depends_on:
+      - influxdb
+    entrypoint: >
+      sh -c "k6 run /scripts/atualizacao_dados.js --out influxdb=http://influxdb:8086/k6"
+    networks:
+      - test-network
+      
+  test_k6_pico_test:
+    image: grafana/k6
+    volumes:
+      - ./testesK6:/scripts:ro
+    depends_on:
+      - influxdb
+    entrypoint: >
+      sh -c "k6 run /scripts/pico_test.js --out influxdb=http://influxdb:8086/k6"
+    networks:
+      - test-network
+      
+  test_k6_escrita_batch:
+    image: grafana/k6
+    volumes:
+      - ./testesK6:/scripts:ro
+    depends_on:
+      - influxdb
+    entrypoint: >
+      sh -c "k6 run /scripts/escrita_batch.js --out influxdb=http://influxdb:8086/k6"
+    networks:
+      - test-network
+
+volumes:
+  influxdb_data:
+  grafana_data:
+  
+ networks:
+  test-network:
+    driver: bridge

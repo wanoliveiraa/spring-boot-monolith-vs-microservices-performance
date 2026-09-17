@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: eurekaserver
+  threads:
+    virtual:
+      enabled: true
+
+server:
+  port: 8761
+
+#para n?o se registrar sozinho
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false

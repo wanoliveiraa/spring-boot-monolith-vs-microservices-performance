@@ -1,0 +1,94 @@
+spring:
+  application:
+    name: mspedido
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?reWriteBatchedInserts=true
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+    hikari:
+      maximum-pool-size: 40     # ótimo para escrita
+      minimum-idle: 10
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  jpa:
+    open-in-view: false   # LIBERA memória durante transações pesadas! MUITO IMPORTANTE
+
+    hibernate:
+      ddl-auto: update
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+        jdbc:
+          batch_size: 50             # CASAR COM seu chunk == 50
+          fetch_size: 50
+
+        order_inserts: true          # Otimiza batches
+        order_updates: true
+
+        generate_statistics: false   # evita overhead em carga
+
+    show-sql: true      # DESATIVAR em carga — pesa muito
+    format_sql: true
+
+  cache:
+    type: jcache
+    jcache:
+      config: classpath:ehcache.xml
+
+  threads:
+    virtual:
+      enabled: true      # melhora throughput com IO bound (HTTPs Feign)
+
+  resilience4j:
+    bulkhead:
+      instances:
+        produto:
+          max-concurrent-calls: 20
+          max-wait-duration: 100ms
+        cliente:
+          max-concurrent-calls: 10
+          max-wait-duration: 100ms
+
+    timelimiter:
+      instances:
+        produto:
+          timeout-duration: 2s
+        cliente:
+          timeout-duration: 2s
+
+    retry:
+      instances:
+        produto:
+          max-attempts: 3
+          wait-duration: 200ms
+          enable-exponential-backoff: true
+          exponential-backoff-multiplier: 2
+          retry-exceptions:
+            - org.springframework.web.client.HttpServerErrorException
+            - feign.RetryableException
+
+        cliente:
+          max-attempts: 3
+          wait-duration: 200ms
+          enable-exponential-backoff: true
+          exponential-backoff-multiplier: 2
+          retry-exceptions:
+            - org.springframework.web.client.HttpServerErrorException
+            - feign.RetryableException
+server:
+  port: 0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eurekaserver:8761/eureka
+
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}

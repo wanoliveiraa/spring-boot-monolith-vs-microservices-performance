@@ -1,0 +1,115 @@
+version: '3.8'
+
+services:
+  influxdb-monolitico:
+    image: influxdb:1.8
+    container_name: influxdb-monolitico
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+    environment:
+      - INFLUXDB_DB=monolito
+    networks:
+      - test-network
+
+  grafana-monolitico:
+    image: grafana/grafana:latest
+    container_name: grafana-monolitico
+    ports:
+      - "3000:3000"
+    depends_on:
+      - influxdb-monolitico  # <--- CORRIGIDO (Aponta para o nome novo)
+    volumes:
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin123
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+    networks:
+      - test-network
+
+  test_k6_popula_banco-monolitico:
+    image: grafana/k6
+    volumes:
+      - ./testesK6:/scripts:ro
+    depends_on:
+      - influxdb-monolitico  # <--- CORRIGIDO
+    entrypoint: >
+      sh -c "k6 run /scripts/popula_banco.js --out influxdb=http://influxdb-monolitico:8086/monolito" 
+    networks:
+      - test-network
+      
+
+  test_k6_escrita_pedidos-monolitico:
+    image: grafana/k6
+    volumes:
+      - ./testesK6:/scripts:ro
+    depends_on:
+      - influxdb-monolitico  # <--- CORRIGIDO
+    entrypoint: >
+      sh -c "k6 run /scripts/escrita_pedidos.js --out influxdb=http://influxdb-monolitico:8086/monolito"
+    networks:
+      - test-network
+
+  test_k6_leitura_simples-monolitico:
+    image: grafana/k6
+    volumes:
+      - ./testesK6:/scripts:ro
+    depends_on:
+      - influxdb-monolitico  # <--- CORRIGIDO
+    entrypoint: >
+      sh -c "k6 run /scripts/leitura_simples.js --out influxdb=http://influxdb-monolitico:8086/monolito"
+    networks:
+      - test-network
+
+  test_k6_leitura_complexa-monolitico:
+    image: grafana/k6
+    volumes:
+      - ./testesK6:/scripts:ro
+    depends_on:
+      - influxdb-monolitico  # <--- CORRIGIDO
+    entrypoint: >
+      sh -c "k6 run /scripts/leitura_complexa.js --out influxdb=http://influxdb-monolitico:8086/monolito"
+    networks:
+      - test-network
+
+  test_k6_atualizacao_dados-monolitico:
+    image: grafana/k6
+    volumes:
+      - ./testesK6:/scripts:ro
+    depends_on:
+      - influxdb-monolitico  # <--- CORRIGIDO
+    entrypoint: >
+      sh -c "k6 run /scripts/atualizacao_dados.js --out influxdb=http://influxdb-monolitico:8086/monolito"
+    networks:
+      - test-network
+
+  test_k6_pico_test-monolitico:
+    image: grafana/k6
+    volumes:
+      - ./testesK6:/scripts:ro
+    depends_on:
+      - influxdb-monolitico  # <--- CORRIGIDO
+    entrypoint: >
+      sh -c "k6 run /scripts/pico_test.js --out influxdb=http://influxdb-monolitico:8086/monolito"
+    networks:
+      - test-network
+      
+  test_k6_escrita_batch-monolitico:
+    image: grafana/k6
+    volumes:
+      - ./testesK6:/scripts:ro
+    depends_on:
+      - influxdb-monolitico  # <--- CORRIGIDO
+    entrypoint: >
+      sh -c "k6 run /scripts/escrita_batch.js --out influxdb=http://influxdb-monolitico:8086/monolito"
+    networks:
+      - test-network
+
+volumes:
+  influxdb_data:
+  grafana_data:
+  
+networks:
+  test-network:
+    driver: bridge

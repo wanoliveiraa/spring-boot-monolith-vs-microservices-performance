@@ -1,0 +1,32 @@
+SHOW TAG VALUES FROM "http_req_duration" WITH KEY = "teste"
+4. Configure a variável testName
+Use essa configuração:
+
+Name: testName
+
+Type: Query
+
+Data source: selecione o seu influxdb
+
+Query:
+
+sql
+Copiar
+Editar
+SHOW TAG VALUES FROM "http_reqs" WITH KEY = "testName"
+Em Refresh: selecione On Dashboard Load
+
+Depois clique em Update ou Save.
+
+5. Use a variável nos painéis
+Agora, vá em qualquer gráfico do dashboard e:
+
+Clique nos três pontos ⋮ no canto superior do painel → Edit
+
+Na aba Queries, adicione ao InfluxQL:
+
+nginx
+Copiar
+Editar
+WHERE "testName" =~ /^$testName$/
+Isso fará com que o painel filtre os dados conforme o valor da variável testName.

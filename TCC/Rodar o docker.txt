@@ -1,0 +1,32 @@
+
+wsl --list --verbose
+wsl -d Ubuntu-24.04
+
+
+
+cd /mnt/c/TCC/TCC/monolito
+docker compose up -d --build
+docker compose -f teste-compose.yml up -d influxdb-monolitico grafana-monolitico
+docker compose -f teste-compose.yml up test_k6_popula_banco-monolitico
+docker compose -f teste-compose.yml up test_k6_escrita_pedidos-monolitico
+docker compose -f teste-compose.yml up test_k6_leitura_simples-monolitico
+docker compose -f teste-compose.yml up test_k6_leitura_complexa-monolitico
+docker compose -f teste-compose.yml up test_k6_atualizacao_dados-monolitico
+docker compose -f teste-compose.yml up test_k6_pico_test-monolitico
+docker compose -f teste-compose.yml up test_k6_escrita_batch-monolitico
+
+cd /mnt/c/TCC/TCC/microservicos/micro
+
+
+para tudo
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+docker rmi -f $(docker images -aq)
+docker volume rm $(docker volume ls -q)
+
+
+http://influxdb-monolitico:8086
+monolito
+
+http://influxdb:8086
+k6

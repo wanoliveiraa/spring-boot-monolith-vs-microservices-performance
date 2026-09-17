@@ -1,0 +1,331 @@
+ █ THRESHOLDS
+test_k6_popula_banco-monolitico-1  |
+test_k6_popula_banco-monolitico-1  |     http_req_duration
+test_k6_popula_banco-monolitico-1  |     ✓ 'p(95)<500' p(95)=206.54ms
+test_k6_popula_banco-monolitico-1  |
+test_k6_popula_banco-monolitico-1  |     http_req_failed{tipo:cliente}
+test_k6_popula_banco-monolitico-1  |     ✓ 'rate<0.01' rate=0.00%
+test_k6_popula_banco-monolitico-1  |
+test_k6_popula_banco-monolitico-1  |     http_req_failed{tipo:produto}
+test_k6_popula_banco-monolitico-1  |     ✓ 'rate<0.01' rate=0.00%
+test_k6_popula_banco-monolitico-1  |
+test_k6_popula_banco-monolitico-1  |
+test_k6_popula_banco-monolitico-1  |   █ TOTAL RESULTS
+test_k6_popula_banco-monolitico-1  |
+test_k6_popula_banco-monolitico-1  |     checks_total.......: 3000    759.716952/s
+test_k6_popula_banco-monolitico-1  |     checks_succeeded...: 100.00% 3000 out of 3000
+test_k6_popula_banco-monolitico-1  |     checks_failed......: 0.00%   0 out of 3000
+test_k6_popula_banco-monolitico-1  |
+test_k6_popula_banco-monolitico-1  |     ✓ cliente criado
+test_k6_popula_banco-monolitico-1  |     ✓ produto criado
+test_k6_popula_banco-monolitico-1  |
+test_k6_popula_banco-monolitico-1  |     HTTP
+test_k6_popula_banco-monolitico-1  |     http_req_duration..............: avg=96.02ms  min=3.2ms    med=86.77ms  max=708.59ms p(90)=184.51ms p(95)=206.54ms
+test_k6_popula_banco-monolitico-1  |       { expected_response:true }...: avg=96.02ms  min=3.2ms    med=86.77ms  max=708.59ms p(90)=184.51ms p(95)=206.54ms
+test_k6_popula_banco-monolitico-1  |     http_req_failed................: 0.00%  0 out of 3000
+test_k6_popula_banco-monolitico-1  |       { tipo:cliente }.............: 0.00%  0 out of 0
+test_k6_popula_banco-monolitico-1  |       { tipo:produto }.............: 0.00%  0 out of 0
+test_k6_popula_banco-monolitico-1  |     http_reqs......................: 3000   759.716952/s
+test_k6_popula_banco-monolitico-1  |
+test_k6_popula_banco-monolitico-1  |     EXECUTION
+test_k6_popula_banco-monolitico-1  |     iteration_duration.............: avg=389.17ms min=130.68ms med=346.72ms max=1.11s    p(90)=701.72ms p(95)=935.17ms
+test_k6_popula_banco-monolitico-1  |     iterations.....................: 1000   253.238984/s
+test_k6_popula_banco-monolitico-1  |     vus............................: 100    min=100       max=100
+test_k6_popula_banco-monolitico-1  |     vus_max........................: 100    min=100       max=100
+test_k6_popula_banco-monolitico-1  |
+test_k6_popula_banco-monolitico-1  |     NETWORK
+test_k6_popula_banco-monolitico-1  |     data_received..................: 544 kB 138 kB/s
+test_k6_popula_banco-monolitico-1  |     data_sent......................: 561 kB 142 kB/s
+test_k6_popula_banco-monolitico-1  |
+test_k6_popula_banco-monolitico-1  |
+test_k6_popula_banco-monolitico-1  |
+test_k6_popula_banco-monolitico-1  |
+test_k6_popula_banco-monolitico-1  | running (00m03.9s), 000/100 VUs, 1000 complete and 0 interrupted iterations
+test_k6_popula_banco-monolitico-1  | default ✓ [ 100% ] 100 VUs  00m03.9s/10m0s  1000/1000 shared iters
+test_k6_popula_banco-monolitico-1 exited with code 0
+
+
+
+test_k6_escrita_pedidos-monolitico-1  |
+test_k6_escrita_pedidos-monolitico-1  |   █ THRESHOLDS
+test_k6_escrita_pedidos-monolitico-1  |
+test_k6_escrita_pedidos-monolitico-1  |     checks{recurso:pedidos}
+test_k6_escrita_pedidos-monolitico-1  |     ✓ 'rate>0.99' rate=100.00%
+test_k6_escrita_pedidos-monolitico-1  |
+test_k6_escrita_pedidos-monolitico-1  |     http_req_duration{recurso:pedidos}
+test_k6_escrita_pedidos-monolitico-1  |     ✓ 'p(95)<400' p(95)=368.21ms
+test_k6_escrita_pedidos-monolitico-1  |
+test_k6_escrita_pedidos-monolitico-1  |     http_req_failed{recurso:pedidos}
+test_k6_escrita_pedidos-monolitico-1  |     ✓ 'rate<0.01' rate=0.00%
+test_k6_escrita_pedidos-monolitico-1  |
+test_k6_escrita_pedidos-monolitico-1  |
+test_k6_escrita_pedidos-monolitico-1  |   █ TOTAL RESULTS
+test_k6_escrita_pedidos-monolitico-1  |
+test_k6_escrita_pedidos-monolitico-1  |     checks_total.......: 56041   1009.891366/s
+test_k6_escrita_pedidos-monolitico-1  |     checks_succeeded...: 100.00% 56041 out of 56041
+test_k6_escrita_pedidos-monolitico-1  |     checks_failed......: 0.00%   0 out of 56041
+test_k6_escrita_pedidos-monolitico-1  |
+test_k6_escrita_pedidos-monolitico-1  |     ✓ pedido criado (200 ou 201)
+test_k6_escrita_pedidos-monolitico-1  |
+test_k6_escrita_pedidos-monolitico-1  |     HTTP
+test_k6_escrita_pedidos-monolitico-1  |     http_req_duration..............: avg=121.68ms min=-9152042694ns med=4.8ms max=9.05s p(90)=201.32ms p(95)=368.21ms
+test_k6_escrita_pedidos-monolitico-1  |       { expected_response:true }...: avg=121.68ms min=-9152042694ns med=4.8ms max=9.05s p(90)=201.32ms p(95)=368.21ms
+test_k6_escrita_pedidos-monolitico-1  |       { recurso:pedidos }..........: avg=121.68ms min=-9152042694ns med=4.8ms max=9.05s p(90)=201.32ms p(95)=368.21ms
+test_k6_escrita_pedidos-monolitico-1  |     http_req_failed................: 0.00% 0 out of 56041
+test_k6_escrita_pedidos-monolitico-1  |       { recurso:pedidos }..........: 0.00% 0 out of 56041
+test_k6_escrita_pedidos-monolitico-1  |     http_reqs......................: 56041 1009.891366/s
+test_k6_escrita_pedidos-monolitico-1  |
+test_k6_escrita_pedidos-monolitico-1  |     EXECUTION
+test_k6_escrita_pedidos-monolitico-1  |     iteration_duration.............: avg=1.07s    min=1s            med=1s    max=3.42s p(90)=1.2s     p(95)=1.35s
+test_k6_escrita_pedidos-monolitico-1  |     iterations.....................: 56041 1009.891366/s
+test_k6_escrita_pedidos-monolitico-1  |     vus............................: 80    min=80         max=1000
+test_k6_escrita_pedidos-monolitico-1  |     vus_max........................: 1000  min=1000       max=1000
+test_k6_escrita_pedidos-monolitico-1  |
+test_k6_escrita_pedidos-monolitico-1  |     NETWORK
+test_k6_escrita_pedidos-monolitico-1  |     data_received..................: 22 MB 400 kB/s
+test_k6_escrita_pedidos-monolitico-1  |     data_sent......................: 12 MB 220 kB/s
+test_k6_escrita_pedidos-monolitico-1  |
+test_k6_escrita_pedidos-monolitico-1  |
+test_k6_escrita_pedidos-monolitico-1  |
+test_k6_escrita_pedidos-monolitico-1  |
+test_k6_escrita_pedidos-monolitico-1  | running (0m55.5s), 0000/1000 VUs, 56041 complete and 0 interrupted iterations
+test_k6_escrita_pedidos-monolitico-1  | default ✓ [ 100% ] 1000 VUs  1m0s
+test_k6_escrita_pedidos-monolitico-1 exited with code 0
+
+
+
+test_k6_leitura_simples-monolitico-1  |
+test_k6_leitura_simples-monolitico-1  |   █ THRESHOLDS
+test_k6_leitura_simples-monolitico-1  |
+test_k6_leitura_simples-monolitico-1  |     checks{recurso:pedidos}
+test_k6_leitura_simples-monolitico-1  |     ✓ 'rate>0.99' rate=100.00%
+test_k6_leitura_simples-monolitico-1  |
+test_k6_leitura_simples-monolitico-1  |     http_req_duration{recurso:pedidos}
+test_k6_leitura_simples-monolitico-1  |     ✗ 'p(95)<400' p(95)=4.2s
+test_k6_leitura_simples-monolitico-1  |
+test_k6_leitura_simples-monolitico-1  |     http_req_failed{recurso:pedidos}
+test_k6_leitura_simples-monolitico-1  |     ✓ 'rate<0.01' rate=0.00%
+test_k6_leitura_simples-monolitico-1  |
+test_k6_leitura_simples-monolitico-1  |
+test_k6_leitura_simples-monolitico-1  |   █ TOTAL RESULTS
+test_k6_leitura_simples-monolitico-1  |
+test_k6_leitura_simples-monolitico-1  |     checks_total.......: 8940    154.622312/s
+test_k6_leitura_simples-monolitico-1  |     checks_succeeded...: 100.00% 8940 out of 8940
+test_k6_leitura_simples-monolitico-1  |     checks_failed......: 0.00%   0 out of 8940
+test_k6_leitura_simples-monolitico-1  |
+test_k6_leitura_simples-monolitico-1  |     ✓ pedido simples obtido (200)
+test_k6_leitura_simples-monolitico-1  |
+test_k6_leitura_simples-monolitico-1  |     HTTP
+test_k6_leitura_simples-monolitico-1  |     http_req_duration..............: avg=2.46s min=23.74µs med=2.29s max=13.87s p(90)=2.81s p(95)=4.2s
+test_k6_leitura_simples-monolitico-1  |       { expected_response:true }...: avg=2.46s min=23.74µs med=2.29s max=13.87s p(90)=2.81s p(95)=4.2s
+test_k6_leitura_simples-monolitico-1  |       { recurso:pedidos }..........: avg=2.46s min=23.74µs med=2.29s max=13.87s p(90)=2.81s p(95)=4.2s
+test_k6_leitura_simples-monolitico-1  |     http_req_failed................: 0.00%  0 out of 8940
+test_k6_leitura_simples-monolitico-1  |       { recurso:pedidos }..........: 0.00%  0 out of 8940
+test_k6_leitura_simples-monolitico-1  |     http_reqs......................: 8940   154.622312/s
+test_k6_leitura_simples-monolitico-1  |
+test_k6_leitura_simples-monolitico-1  |     EXECUTION
+test_k6_leitura_simples-monolitico-1  |     iteration_duration.............: avg=3.44s min=1s      med=3.4s  max=9.99s  p(90)=3.8s  p(95)=4.13s
+test_k6_leitura_simples-monolitico-1  |     iterations.....................: 8940   154.622312/s
+test_k6_leitura_simples-monolitico-1  |     vus............................: 65     min=65        max=500
+test_k6_leitura_simples-monolitico-1  |     vus_max........................: 500    min=500       max=500
+test_k6_leitura_simples-monolitico-1  |
+test_k6_leitura_simples-monolitico-1  |     NETWORK
+test_k6_leitura_simples-monolitico-1  |     data_received..................: 3.5 MB 61 kB/s
+test_k6_leitura_simples-monolitico-1  |     data_sent......................: 812 kB 14 kB/s
+test_k6_leitura_simples-monolitico-1  |
+test_k6_leitura_simples-monolitico-1  |
+test_k6_leitura_simples-monolitico-1  |
+test_k6_leitura_simples-monolitico-1  |
+test_k6_leitura_simples-monolitico-1  | running (0m57.8s), 000/500 VUs, 8940 complete and 0 interrupted iterations
+test_k6_leitura_simples-monolitico-1  | default ✓ [ 100% ] 500 VUs  1m0s
+test_k6_leitura_simples-monolitico-1  | time="2025-11-21T20:19:38Z" level=error msg="thresholds on metrics 'http_req_duration{recurso:pedidos}' have been crossed"
+
+
+
+test_k6_leitura_complexa-monolitico-1  |   █ THRESHOLDS
+test_k6_leitura_complexa-monolitico-1  |
+test_k6_leitura_complexa-monolitico-1  |     checks{recurso:pedidos}
+test_k6_leitura_complexa-monolitico-1  |     ✓ 'rate>0.99' rate=99.96%
+test_k6_leitura_complexa-monolitico-1  |
+test_k6_leitura_complexa-monolitico-1  |     http_req_duration{recurso:pedidos}
+test_k6_leitura_complexa-monolitico-1  |     ✗ 'p(95)<400' p(95)=19.87s
+test_k6_leitura_complexa-monolitico-1  |
+test_k6_leitura_complexa-monolitico-1  |     http_req_failed{recurso:pedidos}
+test_k6_leitura_complexa-monolitico-1  |     ✓ 'rate<0.01' rate=0.03%
+test_k6_leitura_complexa-monolitico-1  |
+test_k6_leitura_complexa-monolitico-1  |
+test_k6_leitura_complexa-monolitico-1  |   █ TOTAL RESULTS
+test_k6_leitura_complexa-monolitico-1  |
+test_k6_leitura_complexa-monolitico-1  |     checks_total.......: 10568  159.011417/s
+test_k6_leitura_complexa-monolitico-1  |     checks_succeeded...: 99.96% 10564 out of 10568
+test_k6_leitura_complexa-monolitico-1  |     checks_failed......: 0.03%  4 out of 10568
+test_k6_leitura_complexa-monolitico-1  |
+test_k6_leitura_complexa-monolitico-1  |     ✗ pedido complexo obtido 200
+test_k6_leitura_complexa-monolitico-1  |       ↳  99% — ✓ 5282 / ✗ 2
+test_k6_leitura_complexa-monolitico-1  |     ✗ pedido complexo contém lista
+test_k6_leitura_complexa-monolitico-1  |       ↳  99% — ✓ 5282 / ✗ 2
+test_k6_leitura_complexa-monolitico-1  |
+test_k6_leitura_complexa-monolitico-1  |     HTTP
+test_k6_leitura_complexa-monolitico-1  |     http_req_duration..............: avg=10.65s min=61.4µs med=11.41s max=31.87s p(90)=12.29s p(95)=19.87s
+test_k6_leitura_complexa-monolitico-1  |       { expected_response:true }...: avg=10.65s min=61.4µs med=11.41s max=31.87s p(90)=12.29s p(95)=19.87s
+test_k6_leitura_complexa-monolitico-1  |       { recurso:pedidos }..........: avg=10.65s min=61.4µs med=11.41s max=31.87s p(90)=12.29s p(95)=19.87s
+test_k6_leitura_complexa-monolitico-1  |     http_req_failed................: 0.03%  2 out of 5284
+test_k6_leitura_complexa-monolitico-1  |       { recurso:pedidos }..........: 0.03%  2 out of 5284
+test_k6_leitura_complexa-monolitico-1  |     http_reqs......................: 5284   79.505709/s
+test_k6_leitura_complexa-monolitico-1  |
+test_k6_leitura_complexa-monolitico-1  |     EXECUTION
+test_k6_leitura_complexa-monolitico-1  |     iteration_duration.............: avg=12.64s min=1.03s  med=13.5s  max=31.01s p(90)=14.29s p(95)=14.59s
+test_k6_leitura_complexa-monolitico-1  |     iterations.....................: 5284   79.505709/s
+test_k6_leitura_complexa-monolitico-1  |     vus............................: 58     min=58        max=1000
+test_k6_leitura_complexa-monolitico-1  |     vus_max........................: 1000   min=1000      max=1000
+test_k6_leitura_complexa-monolitico-1  |
+test_k6_leitura_complexa-monolitico-1  |     NETWORK
+test_k6_leitura_complexa-monolitico-1  |     data_received..................: 81 MB  1.2 MB/s
+test_k6_leitura_complexa-monolitico-1  |     data_sent......................: 517 kB 7.8 kB/s
+test_k6_leitura_complexa-monolitico-1  |
+test_k6_leitura_complexa-monolitico-1  |
+test_k6_leitura_complexa-monolitico-1  |
+test_k6_leitura_complexa-monolitico-1  |
+test_k6_leitura_complexa-monolitico-1  | running (1m06.5s), 0000/1000 VUs, 5284 complete and 0 interrupted iterations
+test_k6_leitura_complexa-monolitico-1  | default ✓ [ 100% ] 1000 VUs  1m0s
+test_k6_leitura_complexa-monolitico-1  | time="2025-11-21T20:21:49Z" level=error msg="thresholds on metrics 'http_req_duration{recurso:pedidos}' have been crossed"
+test_k6_leitura_complexa-monolitico-1 exited with code 99
+wando@WANDO:/mnt/c/TCC/TCC/monolito$
+
+
+test_k6_atualizacao_dados-monolitico-1  |   █ THRESHOLDS
+test_k6_atualizacao_dados-monolitico-1  |
+test_k6_atualizacao_dados-monolitico-1  |     checks
+test_k6_atualizacao_dados-monolitico-1  |     ✓ 'rate>0.99' rate=100.00%
+test_k6_atualizacao_dados-monolitico-1  |
+test_k6_atualizacao_dados-monolitico-1  |     http_req_duration
+test_k6_atualizacao_dados-monolitico-1  |     ✗ 'p(95)<400' p(95)=4.29s
+test_k6_atualizacao_dados-monolitico-1  |
+test_k6_atualizacao_dados-monolitico-1  |     http_req_failed
+test_k6_atualizacao_dados-monolitico-1  |     ✓ 'rate<0.01' rate=0.00%
+test_k6_atualizacao_dados-monolitico-1  |
+test_k6_atualizacao_dados-monolitico-1  |
+test_k6_atualizacao_dados-monolitico-1  |   █ TOTAL RESULTS
+test_k6_atualizacao_dados-monolitico-1  |
+test_k6_atualizacao_dados-monolitico-1  |     checks_total.......: 8716    151.744251/s
+test_k6_atualizacao_dados-monolitico-1  |     checks_succeeded...: 100.00% 8716 out of 8716
+test_k6_atualizacao_dados-monolitico-1  |     checks_failed......: 0.00%   0 out of 8716
+test_k6_atualizacao_dados-monolitico-1  |
+test_k6_atualizacao_dados-monolitico-1  |     ✓ pedido atualizado (200)
+test_k6_atualizacao_dados-monolitico-1  |
+test_k6_atualizacao_dados-monolitico-1  |     HTTP
+test_k6_atualizacao_dados-monolitico-1  |     http_req_duration..............: avg=2.53s min=27.85µs med=2.38s max=13.67s p(90)=2.88s p(95)=4.29s
+test_k6_atualizacao_dados-monolitico-1  |       { expected_response:true }...: avg=2.53s min=27.85µs med=2.38s max=13.67s p(90)=2.88s p(95)=4.29s
+test_k6_atualizacao_dados-monolitico-1  |     http_req_failed................: 0.00%  0 out of 8716
+test_k6_atualizacao_dados-monolitico-1  |     http_reqs......................: 8716   151.744251/s
+test_k6_atualizacao_dados-monolitico-1  |
+test_k6_atualizacao_dados-monolitico-1  |     EXECUTION
+test_k6_atualizacao_dados-monolitico-1  |     iteration_duration.............: avg=3.53s min=1s      med=3.5s  max=9.05s  p(90)=3.89s p(95)=4.09s
+test_k6_atualizacao_dados-monolitico-1  |     iterations.....................: 8716   151.744251/s
+test_k6_atualizacao_dados-monolitico-1  |     vus............................: 83     min=83        max=500
+test_k6_atualizacao_dados-monolitico-1  |     vus_max........................: 500    min=500       max=500
+test_k6_atualizacao_dados-monolitico-1  |
+test_k6_atualizacao_dados-monolitico-1  |     NETWORK
+test_k6_atualizacao_dados-monolitico-1  |     data_received..................: 3.4 MB 60 kB/s
+test_k6_atualizacao_dados-monolitico-1  |     data_sent......................: 1.6 MB 28 kB/s
+test_k6_atualizacao_dados-monolitico-1  |
+test_k6_atualizacao_dados-monolitico-1  |
+test_k6_atualizacao_dados-monolitico-1  |
+test_k6_atualizacao_dados-monolitico-1  |
+test_k6_atualizacao_dados-monolitico-1  | running (0m57.4s), 000/500 VUs, 8716 complete and 0 interrupted iterations
+test_k6_atualizacao_dados-monolitico-1  | default ✓ [ 100% ] 500 VUs  1m0s
+test_k6_atualizacao_dados-monolitico-1  | time="2025-11-21T20:23:30Z" level=error msg="thresholds on metrics 'http_req_duration' have been crossed"
+test_k6_atualizacao_dados-monolitico-1 exited with code 99
+wando@WANDO:/mnt/c/TCC/TCC/monolito$
+
+
+test_k6_pico_test-monolitico-1  |
+test_k6_pico_test-monolitico-1  |   █ THRESHOLDS
+test_k6_pico_test-monolitico-1  |
+test_k6_pico_test-monolitico-1  |     checks{recurso:pedidos}
+test_k6_pico_test-monolitico-1  |     ✓ 'rate>0.98' rate=100.00%
+test_k6_pico_test-monolitico-1  |
+test_k6_pico_test-monolitico-1  |     http_req_duration{recurso:pedidos}
+test_k6_pico_test-monolitico-1  |     ✗ 'p(95)<600' p(95)=3.24s
+test_k6_pico_test-monolitico-1  |
+test_k6_pico_test-monolitico-1  |     http_req_failed{recurso:pedidos}
+test_k6_pico_test-monolitico-1  |     ✓ 'rate<0.05' rate=0.00%
+test_k6_pico_test-monolitico-1  |
+test_k6_pico_test-monolitico-1  |
+test_k6_pico_test-monolitico-1  |   █ TOTAL RESULTS
+test_k6_pico_test-monolitico-1  |
+test_k6_pico_test-monolitico-1  |     checks_total.......: 3073    81.927409/s
+test_k6_pico_test-monolitico-1  |     checks_succeeded...: 100.00% 3073 out of 3073
+test_k6_pico_test-monolitico-1  |     checks_failed......: 0.00%   0 out of 3073
+test_k6_pico_test-monolitico-1  |
+test_k6_pico_test-monolitico-1  |     ✓ pedido retornado com sucesso (200)
+test_k6_pico_test-monolitico-1  |
+test_k6_pico_test-monolitico-1  |     HTTP
+test_k6_pico_test-monolitico-1  |     http_req_duration..............: avg=1.75s min=23.9µs med=1.89s max=13.78s p(90)=2.6s p(95)=3.24s
+test_k6_pico_test-monolitico-1  |       { expected_response:true }...: avg=1.75s min=23.9µs med=1.89s max=13.78s p(90)=2.6s p(95)=3.24s
+test_k6_pico_test-monolitico-1  |       { recurso:pedidos }..........: avg=1.75s min=23.9µs med=1.89s max=13.78s p(90)=2.6s p(95)=3.24s
+test_k6_pico_test-monolitico-1  |     http_req_failed................: 0.00%  0 out of 3073
+test_k6_pico_test-monolitico-1  |       { recurso:pedidos }..........: 0.00%  0 out of 3073
+test_k6_pico_test-monolitico-1  |     http_reqs......................: 3073   81.927409/s
+test_k6_pico_test-monolitico-1  |
+test_k6_pico_test-monolitico-1  |     EXECUTION
+test_k6_pico_test-monolitico-1  |     iteration_duration.............: avg=2.75s min=1s     med=3.2s  max=9.09s  p(90)=3.7s p(95)=3.89s
+test_k6_pico_test-monolitico-1  |     iterations.....................: 3073   81.927409/s
+test_k6_pico_test-monolitico-1  |     vus............................: 3      min=1         max=500
+test_k6_pico_test-monolitico-1  |     vus_max........................: 500    min=500       max=500
+test_k6_pico_test-monolitico-1  |
+test_k6_pico_test-monolitico-1  |     NETWORK
+test_k6_pico_test-monolitico-1  |     data_received..................: 1.2 MB 32 kB/s
+test_k6_pico_test-monolitico-1  |     data_sent......................: 276 kB 7.4 kB/s
+test_k6_pico_test-monolitico-1  |
+test_k6_pico_test-monolitico-1  |
+test_k6_pico_test-monolitico-1  |
+test_k6_pico_test-monolitico-1  |
+test_k6_pico_test-monolitico-1  | running (0m37.5s), 000/500 VUs, 3073 complete and 0 interrupted iterations
+test_k6_pico_test-monolitico-1  | default ✓ [ 100% ] 000/500 VUs  40s
+test_k6_pico_test-monolitico-1  | time="2025-11-21T20:24:43Z" level=error msg="thresholds on metrics 'http_req_duration{recurso:pedidos}' have been crossed"
+test_k6_pico_test-monolitico-1 exited with code 99
+
+
+test_k6_escrita_batch-monolitico-1  |   █ THRESHOLDS
+test_k6_escrita_batch-monolitico-1  |
+test_k6_escrita_batch-monolitico-1  |     http_req_duration{recurso:pedidos_lote}
+test_k6_escrita_batch-monolitico-1  |     ✗ 'p(95)<2000' p(95)=4.19s
+test_k6_escrita_batch-monolitico-1  |
+test_k6_escrita_batch-monolitico-1  |     http_req_failed{recurso:pedidos_lote}
+test_k6_escrita_batch-monolitico-1  |     ✓ 'rate<0.05' rate=0.00%
+test_k6_escrita_batch-monolitico-1  |
+test_k6_escrita_batch-monolitico-1  |
+test_k6_escrita_batch-monolitico-1  |   █ TOTAL RESULTS
+test_k6_escrita_batch-monolitico-1  |
+test_k6_escrita_batch-monolitico-1  |     checks_total.......: 5452    112.035699/s
+test_k6_escrita_batch-monolitico-1  |     checks_succeeded...: 100.00% 5452 out of 5452
+test_k6_escrita_batch-monolitico-1  |     checks_failed......: 0.00%   0 out of 5452
+test_k6_escrita_batch-monolitico-1  |
+test_k6_escrita_batch-monolitico-1  |     ✓ lote criado (200 ou 201)
+test_k6_escrita_batch-monolitico-1  |
+test_k6_escrita_batch-monolitico-1  |     HTTP
+test_k6_escrita_batch-monolitico-1  |     http_req_duration..............: avg=2.49s min=-7553500407ns med=2.19s max=12.77s p(90)=2.83s p(95)=4.19s
+test_k6_escrita_batch-monolitico-1  |       { expected_response:true }...: avg=2.49s min=-7553500407ns med=2.19s max=12.77s p(90)=2.83s p(95)=4.19s
+test_k6_escrita_batch-monolitico-1  |       { recurso:pedidos_lote }.....: avg=2.49s min=-7553500407ns med=2.19s max=12.77s p(90)=2.83s p(95)=4.19s
+test_k6_escrita_batch-monolitico-1  |     http_req_failed................: 0.00%  0 out of 5452
+test_k6_escrita_batch-monolitico-1  |       { recurso:pedidos_lote }.....: 0.00%  0 out of 5452
+test_k6_escrita_batch-monolitico-1  |     http_reqs......................: 5452   112.035699/s
+test_k6_escrita_batch-monolitico-1  |
+test_k6_escrita_batch-monolitico-1  |     EXECUTION
+test_k6_escrita_batch-monolitico-1  |     iteration_duration.............: avg=3.39s min=1.1s          med=3.39s max=6.21s  p(90)=3.81s p(95)=4s
+test_k6_escrita_batch-monolitico-1  |     iterations.....................: 5452   112.035699/s
+test_k6_escrita_batch-monolitico-1  |     vus............................: 39     min=39        max=300
+test_k6_escrita_batch-monolitico-1  |     vus_max........................: 300    min=300       max=300
+test_k6_escrita_batch-monolitico-1  |
+test_k6_escrita_batch-monolitico-1  |     NETWORK
+test_k6_escrita_batch-monolitico-1  |     data_received..................: 676 kB 14 kB/s
+test_k6_escrita_batch-monolitico-1  |     data_sent......................: 19 MB  379 kB/s
+test_k6_escrita_batch-monolitico-1  |
+test_k6_escrita_batch-monolitico-1  |
+test_k6_escrita_batch-monolitico-1  |
+test_k6_escrita_batch-monolitico-1  |
+test_k6_escrita_batch-monolitico-1  | running (0m48.7s), 000/300 VUs, 5452 complete and 0 interrupted iterations
+test_k6_escrita_batch-monolitico-1  | default ✓ [ 100% ] 300 VUs  1m0s
+test_k6_escrita_batch-monolitico-1  | time="2025-11-21T20:26:22Z" level=error msg="thresholds on metrics 'http_req_duration{recurso:pedidos_lote}' have been crossed"
+test_k6_escrita_batch-monolitico-1 exited with code 99

@@ -1,0 +1,131 @@
+version: '2.4'
+
+services:
+
+  eurekaserver:
+    image: my-eurekaserver:latest
+    container_name: eurekaserver
+    ports:
+      - "8761:8761"
+    networks:
+      - app-network
+    mem_limit: 200m
+    cpus: 0.2
+
+  mscloudgateway:
+    build: ./mscloudgateway
+    container_name: mscloudgateway
+    environment:
+      EUREKA_SERVER_URL: http://eurekaserver:8761/eureka
+      JAVA_OPTS: "-Xms128m -Xmx256m"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - eurekaserver
+    networks:
+      - app-network
+    mem_limit: 250m
+    cpus: 0.3
+
+  mscliente:
+    build: ./mscliente
+    container_name: mscliente
+    environment:
+      EUREKA_SERVER_URL: http://eurekaserver:8761/eureka
+      JAVA_OPTS: "-Xms128m -Xmx256m"
+      DB_NAME: ${MSCLIENTE_DB_NAME}
+      DB_USER: ${MSCLIENTE_DB_USER}
+      DB_PASSWORD: ${MSCLIENTE_DB_PASSWORD}
+      DB_PORT: ${MSCLIENTE_DB_PORT}
+      DB_HOST: ${MSCLIENTE_DB_HOST}
+    depends_on:
+      - eurekaserver
+      - mscliente-db
+    networks:
+      - app-network
+    mem_limit: 400m
+    cpus: 0.5
+
+  msproduto:
+    build: ./msproduto
+    container_name: msproduto
+    environment:
+      EUREKA_SERVER_URL: http://eurekaserver:8761/eureka
+      JAVA_OPTS: "-Xms128m -Xmx256m"
+      DB_NAME: ${MSPRODUTO_DB_NAME}
+      DB_USER: ${MSPRODUTO_DB_USER}
+      DB_PASSWORD: ${MSPRODUTO_DB_PASSWORD}
+      DB_PORT: ${MSPRODUTO_DB_PORT}
+      DB_HOST: ${MSPRODUTO_DB_HOST}
+    depends_on:
+      - eurekaserver
+      - msproduto-db
+    networks:
+      - app-network
+    mem_limit: 400m
+    cpus: 0.5
+
+  mspedido:
+    build: ./mspedido
+    container_name: mspedido
+    environment:
+      EUREKA_SERVER_URL: http://eurekaserver:8761/eureka
+      JAVA_OPTS: "-Xms256m -Xmx560m"
+      DB_NAME: ${MSPEDIDO_DB_NAME}
+      DB_USER: ${MSPEDIDO_DB_USER}
+      DB_PASSWORD: ${MSPEDIDO_DB_PASSWORD}
+      DB_PORT: ${MSPEDIDO_DB_PORT}
+      DB_HOST: ${MSPEDIDO_DB_HOST}
+    depends_on:
+      - eurekaserver
+      - mspedido-db
+    networks:
+      - app-network
+    mem_limit: 800m
+    cpus: 0.5
+
+  mscliente-db:
+    image: postgres:16-alpine3.18
+    container_name: ${MSCLIENTE_DB_CONTAINER}
+    environment:
+      POSTGRES_DB: ${MSCLIENTE_DB_NAME}
+      POSTGRES_USER: ${MSCLIENTE_DB_USER}
+      POSTGRES_PASSWORD: ${MSCLIENTE_DB_PASSWORD}
+    ports:
+      - "5433:5432"
+    networks:
+      - app-network
+    mem_limit: 700m
+    cpus: 0.33
+
+  msproduto-db:
+    image: postgres:16-alpine3.18
+    container_name: ${MSPRODUTO_DB_CONTAINER}
+    environment:
+      POSTGRES_DB: ${MSPRODUTO_DB_NAME}
+      POSTGRES_USER: ${MSPRODUTO_DB_USER}
+      POSTGRES_PASSWORD: ${MSPRODUTO_DB_PASSWORD}
+    ports:
+      - "5434:5432"
+    networks:
+      - app-network
+    mem_limit: 700m
+    cpus: 0.33
+
+  mspedido-db:
+    image: postgres:16-alpine3.18
+    container_name: ${MSPEDIDO_DB_CONTAINER}
+    environment:
+      POSTGRES_DB: ${MSPEDIDO_DB_NAME}
+      POSTGRES_USER: ${MSPEDIDO_DB_USER}
+      POSTGRES_PASSWORD: ${MSPEDIDO_DB_PASSWORD}
+    ports:
+      - "5435:5432"
+    networks:
+      - app-network
+    mem_limit: 700m
+    cpus: 0.34
+
+networks:
+  app-network:
+    driver: bridge

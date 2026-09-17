@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: mscloudgateway
+  cloud: #habilitar o gateway
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+  threads:
+    virtual:
+      enabled: true
+
+server:
+  port: 8080
+
+eureka: #encontrar o eureka
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eurekaserver:8761/eureka
